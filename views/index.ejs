@@ -1,0 +1,18 @@
+<% layout('layout') %>
+
+<h2>スレッド一覧</h2>
+
+<% if (threads.length === 0) { %>
+  <p>まだスレッドがありません。</p>
+<% } else { %>
+  <ul class="thread-list">
+    <% threads.forEach(thread => { %>
+      <li>
+        <a href="/thread/<%= thread._id %>">
+          <%= thread.title %>
+        </a>
+        <span class="meta">by <%= thread.author %> / <%= thread.createdAt.toLocaleString() %></span>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
