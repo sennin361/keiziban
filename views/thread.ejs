@@ -1,0 +1,37 @@
+<% layout('layout') %>
+
+<h2><%= thread.title %></h2>
+<p class="meta">
+  作成者: <strong><%= thread.author %></strong><br />
+  投稿日: <%= thread.createdAt.toLocaleString() %>
+</p>
+
+<hr />
+
+<h3>コメント</h3>
+
+<% if (thread.comments.length === 0) { %>
+  <p>まだコメントがありません。</p>
+<% } else { %>
+  <ul class="comment-list">
+    <% thread.comments.forEach(comment => { %>
+      <li>
+        <div class="comment-author"><%= comment.author %></div>
+        <div class="comment-content"><%= comment.content %></div>
+        <div class="comment-date"><%= comment.createdAt.toLocaleString() %></div>
+      </li>
+    <% }); %>
+  </ul>
+<% } %>
+
+<hr />
+
+<% if (user) { %>
+  <h4>コメントを投稿する</h4>
+  <form action="/thread/<%= thread._id %>/comment" method="POST">
+    <textarea name="content" required rows="4" cols="50" placeholder="コメント内容"></textarea><br />
+    <button type="submit">投稿</button>
+  </form>
+<% } else { %>
+  <p><a href="/login">ログイン</a>するとコメントを投稿できます。</p>
+<% } %>
