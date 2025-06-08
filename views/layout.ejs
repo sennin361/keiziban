@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1><a href="/">仙人掲示板</a></h1>
+    <nav>
+      <% if (user) { %>
+        ようこそ、<%= user %> さん |
+        <a href="/thread/new">新しいスレッド作成</a> |
+        <a href="/logout">ログアウト</a>
+      <% } else { %>
+        <a href="/login">ログイン</a> |
+        <a href="/register">新規登録</a>
+      <% } %>
+    </nav>
+  </header>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 仙人掲示板</small>
+  </footer>
+</body>
+</html>
