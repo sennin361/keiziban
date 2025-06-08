@@ -1,0 +1,13 @@
+<% layout('layout') %>
+
+<h2>新しいスレッドを作成</h2>
+
+<form action="/thread/new" method="POST">
+  <label for="title">スレッドタイトル：</label><br />
+  <input type="text" id="title" name="title" required /><br /><br />
+
+  <label for="content">最初のコメント：</label><br />
+  <textarea id="content" name="content" rows="5" cols="50" required></textarea><br /><br />
+
+  <button type="submit">作成する</button>
+</form>
